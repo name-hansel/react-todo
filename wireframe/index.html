@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="main-heading">TO-DO</h1>
+    <section class="body">
+      <!-- Tags section -->
+      <section class="section tags">
+        <h2 class="heading">TAGS</h2>
+        <ul class="tags-list">
+          <li class="tag">Study</li>
+          <li class="tag active-tag">Work</li>
+          <li class="tag">Exercise</li>
+          <li class="tag">Important</li>
+        </ul>
+      </section>
+
+      <!-- Middle section -->
+      <main class="section main">
+        <!-- Input to add items -->
+        <div class="main-one">
+          <form action="/">
+            <input
+              type="text"
+              name="todo"
+              id=""
+              class="input todo"
+              placeholder="Enter your task..."
+            />
+            <div class="todo-form">
+              <input
+                type="text"
+                name="tags"
+                id=""
+                class="input input-tags"
+                placeholder="Enter the tags (Comma seperated)"
+              />
+              <button class="btn btn-plus"><i class="fa fa-plus"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Todo items -->
+        <div class="todo-container">
+          <ul>
+            <!-- Task 1 -->
+            <li class="todo-list-item">
+              <div class="todo-item">
+                <div class="todo-item-main">
+                  <div><i class="far fa-square"></i> <span>Task 1</span></div>
+                  <i class="far fa-trash-alt"></i>
+                </div>
+
+                <div class="todo-item-tags">
+                  <span class="item-tag">study, maths, school</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="todo-list-item">
+              <div class="todo-item">
+                <div class="todo-item-main">
+                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
+                  <i class="far fa-trash-alt"></i>
+                </div>
+
+                <!-- <div class="todo-item-tags">
+                <span class="tag">study, maths, school</span>
+              </div> -->
+              </div>
+            </li>
+
+            <li class="todo-list-item">
+              <div class="todo-item">
+                <div class="todo-item-main">
+                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
+
+                  <i class="far fa-trash-alt"></i>
+                </div>
+
+                <div class="todo-item-tags">
+                  <span class="item-tag">study, maths, school</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="todo-list-item">
+              <div class="todo-item done">
+                <div class="todo-item-main">
+                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
+
+                  <i class="far fa-trash-alt"></i>
+                </div>
+
+                <div class="todo-item-tags">
+                  <span class="item-tag">study, maths, school</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </section>
+  </body>
+</html>
