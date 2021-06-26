@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-const TaskForm = props => {
+import { addTask } from '../actions/task'
+
+const TaskForm = ({ addTask, tasks }) => {
   const [task, setTask] = useState({
     text: '',
     tags: ''
@@ -9,7 +12,11 @@ const TaskForm = props => {
 
   return (
     <div className="main-one">
-      <form action="/">
+      <form onSubmit={e => {
+        e.preventDefault()
+        addTask(task)
+        setTask({ text: '', tags: '' })
+      }}>
         <input
           type="text"
           name="todo"
@@ -39,7 +46,12 @@ const TaskForm = props => {
 }
 
 TaskForm.propTypes = {
-
+  addTask: PropTypes.func.isRequired,
+  tasks: PropTypes.array.isRequired,
 }
 
-export default TaskForm
+const mapStateToProps = state => ({
+  tasks: state.task.tasks
+})
+
+export default connect(mapStateToProps, { addTask })(TaskForm)
