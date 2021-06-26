@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS, SET_EDIT_TASK, EDIT_TASK, ADD_TAG, LOAD_TAGS } from "./types";
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS, SET_EDIT_TASK, EDIT_TASK, ADD_TAG, LOAD_TAGS, SET_TAG } from "./types";
 
 export const addTask = ({ text, tags }) => dispatch => {
   const task = {
     id: uuidv4(),
     text,
-    tags: tags.trim().split(','),
+    tags: tags === '' ? [] : tags.trim().split(','),
     isComplete: false
   }
 
@@ -80,12 +80,17 @@ export const editATask = (id, { text, tags }) => dispatch => {
 }
 
 export const loadTags = () => dispatch => {
-  if (localStorage.tasks === null)
+  if (!localStorage.tasks || localStorage.tasks === null)
     return
 
   const tasksInLS = JSON.parse(localStorage.tasks)
+
   const tags = []
+  const existingTags = ['Complete', 'Not Complete', 'All']
+
   tasksInLS.map(task => task.tags.map(tag => !tags.includes(tag) ? tags.unshift(tag) : null))
+
+  existingTags.map(x => tags.unshift(x))
 
   dispatch({
     type: LOAD_TAGS,
@@ -93,3 +98,9 @@ export const loadTags = () => dispatch => {
   })
 }
 
+export const setTag = (tag) => dispatch => {
+  dispatch({
+    type: SET_TAG,
+    payload: tag
+  })
+}

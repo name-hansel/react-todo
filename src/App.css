@@ -66,6 +66,7 @@ li {
   display: flex;
   justify-content: space-between;
   /* border: 1px solid red; */
+  align-items: center;
 }
 
 .tags-list {
@@ -77,6 +78,7 @@ li {
   padding: 0.2rem;
   color: #ff9292;
   cursor: pointer;
+  width: 10rem;
 }
 
 .active-tag {
@@ -117,7 +119,7 @@ li {
 }
 
 .input-tags {
-  width: 15rem;
+  width: 12rem;
 }
 
 .btn,
@@ -127,8 +129,19 @@ li {
   cursor: pointer;
 }
 
+.btn-form {
+  color: white;
+  background-color: rgba(189, 80, 99, 0.8);
+  font-weight: bold;
+  height: 2rem;
+  margin: 0 0.2rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.6rem;
+}
+
 .fa-lg {
   color: #ff9292;
+  font-weight: bold;
 }
 
 .todo-container {

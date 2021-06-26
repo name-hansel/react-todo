@@ -1,10 +1,11 @@
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_EDIT_TASK, GET_TASKS, EDIT_TASK, ADD_TAG, LOAD_TAGS } from '../actions/types'
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_EDIT_TASK, GET_TASKS, EDIT_TASK, ADD_TAG, LOAD_TAGS, SET_TAG } from '../actions/types'
 
 const initialState = {
   loading: true,
-  tags: [],
+  tags: ['All', 'Not Complete', 'Complete'],
   tasks: [], //id,task,tags,status
   editTask: null,
+  currentTag: 'All',
 }
 
 export default function taskReducer(state = initialState, action) {
@@ -39,6 +40,7 @@ export default function taskReducer(state = initialState, action) {
           ...task, isComplete: !task.isComplete
         } : task)
       }
+
     case SET_EDIT_TASK:
       return {
         ...state,
@@ -54,11 +56,17 @@ export default function taskReducer(state = initialState, action) {
           ...task, text: action.payload.text, tags: action.payload.tags
         } : task)
       }
+
     case DELETE_TASK:
       return {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload),
         loading: false
+      }
+
+    case SET_TAG:
+      return {
+        ...state, currentTag: action.payload
       }
     default:
       return state

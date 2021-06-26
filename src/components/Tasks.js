@@ -4,32 +4,34 @@ import { connect } from 'react-redux'
 
 import TaskItem from './TaskItem'
 
-const Tasks = ({ tasks, tags }) => {
+const Tasks = ({ tasks, currentTag }) => {
   return (
     <div className="todo-container">
       {
         tasks.length > 0 ? (
           <ul key='task-list'>
-            {tasks.map(t => (
-              <li key={t.id} ><TaskItem task={t} /></li>
-            ))}
+            {
+              tasks.map(t => (t.isComplete && currentTag === 'Complete') || (!t.isComplete && currentTag === 'Not Complete') || (t.tags.includes(currentTag) || currentTag === 'All') ? (<li key={t.id} >
+                <TaskItem task={t} />
+              </li>) : '')
+            }
           </ul>
         ) : (
           <h2 className="heading">No tasks yet. Add one!</h2>
         )
       }
-    </div>
+    </div >
   )
 }
 
 const mapStateToProps = state => ({
   tasks: state.task.tasks,
-  tags: state.task.tags
+  currentTag: state.task.currentTag
 })
 
 Tasks.propTypes = {
   tasks: PropTypes.array.isRequired,
-  tags: PropTypes.array.isRequired,
+  currentTag: PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps, {})(Tasks)
+export default connect(mapStateToProps)(Tasks)

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { addTask, editATask } from '../actions/task'
+import { addTask, editATask, loadTags } from '../actions/task'
 
-const TaskForm = ({ addTask, editTask, editATask }) => {
+const TaskForm = ({ addTask, editTask, editATask, loadTags }) => {
   useEffect(() => {
     if (editTask != null) {
       setTask({
@@ -23,10 +23,16 @@ const TaskForm = ({ addTask, editTask, editATask }) => {
     <div className="main-one">
       <form onSubmit={e => {
         e.preventDefault()
+        if (task.text === '' || task.text === ' ') {
+          window.alert('Please enter some text')
+          return
+        }
         if (editTask === null)
           addTask(task)
-        else
+        else {
           editATask(editTask.id, task)
+          loadTags()
+        }
         setTask({ text: '', tags: '' })
       }}>
         <input
@@ -48,12 +54,11 @@ const TaskForm = ({ addTask, editTask, editATask }) => {
             value={task.tags}
             onChange={e => setTask({ ...task, tags: e.target.value })}
           />
-          <button className="btn btn-plus">
-            <i className="fa fa-plus fa-2x"></i>
-          </button>
+          <button className="btn btn-form" type="submit">Add</button>
+          <button className="btn btn-form" onClick={e => { e.preventDefault(); setTask({ text: '', tags: '' }) }}>Clear</button>
         </div>
       </form>
-    </div>
+    </div >
   )
 }
 
@@ -67,4 +72,4 @@ const mapStateToProps = state => ({
   editTask: state.task.editTask
 })
 
-export default connect(mapStateToProps, { addTask, editATask })(TaskForm)
+export default connect(mapStateToProps, { addTask, editATask, loadTags })(TaskForm)
