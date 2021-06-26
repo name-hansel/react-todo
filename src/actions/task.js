@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ADD_TASK, DELETE_TASK, GET_TASKS } from "./types";
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS } from "./types";
 
 export const addTask = ({ text, tags }) => dispatch => {
   const task = {
@@ -35,6 +35,13 @@ export const deleteTask = (id) => dispatch => {
 
   dispatch({
     type: DELETE_TASK,
+    payload: id
+  })
+}
+
+export const completeTask = (id) => dispatch => {
+  dispatch({
+    type: COMPLETE_TASK,
     payload: id
   })
 }

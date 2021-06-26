@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, GET_TASKS } from '../actions/types'
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS } from '../actions/types'
 
 const initialState = {
   loading: true,
@@ -14,6 +14,14 @@ export default function taskReducer(state = initialState, action) {
     case GET_TASKS:
       return {
         ...state, tasks: action.payload, loading: false
+      }
+    case COMPLETE_TASK:
+      return {
+        ...state,
+        loading: false,
+        tasks: state.tasks.map(task => task.id === action.payload ? {
+          ...task, isComplete: !task.isComplete
+        } : task)
       }
     case DELETE_TASK:
       return {
