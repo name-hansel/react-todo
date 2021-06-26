@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { addTask } from '../actions/task'
 
-const TaskForm = ({ addTask, tasks }) => {
+const TaskForm = ({ addTask }) => {
   const [task, setTask] = useState({
     text: '',
     tags: ''
@@ -47,11 +47,6 @@ const TaskForm = ({ addTask, tasks }) => {
 
 TaskForm.propTypes = {
   addTask: PropTypes.func.isRequired,
-  tasks: PropTypes.array.isRequired,
 }
 
-const mapStateToProps = state => ({
-  tasks: state.task.tasks
-})
-
-export default connect(mapStateToProps, { addTask })(TaskForm)
+export default connect(null, { addTask })(TaskForm)

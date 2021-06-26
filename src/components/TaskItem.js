@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-const TaskItem = ({ task: {
+import { deleteTask } from '../actions/task'
+
+const TaskItem = ({ task: { id,
   text, tags, isComplete
-} }) => {
+}, deleteTask }) => {
   return (
     <div className="task-item-container">
       <div className="task-item-main">
@@ -17,7 +20,7 @@ const TaskItem = ({ task: {
           <button className="btn-small btn-edit">
             <i className="far fa-edit fa-lg"></i>
           </button>
-          <button className="btn-small btn-edit">
+          <button className="btn-small btn-edit" onClick={e => deleteTask(id)}>
             <i className="far fa-trash-alt fa-lg"></i>
           </button>
         </div>
@@ -30,7 +33,7 @@ const TaskItem = ({ task: {
 }
 
 TaskItem.propTypes = {
-
+  deleteTask: PropTypes.func.isRequired,
 }
 
-export default TaskItem
+export default connect(null, { deleteTask })(TaskItem)

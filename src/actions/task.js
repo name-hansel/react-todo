@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ADD_TASK, GET_TASKS } from "./types";
+import { ADD_TASK, DELETE_TASK, GET_TASKS } from "./types";
 
 export const addTask = ({ text, tags }) => dispatch => {
   const task = {
@@ -26,5 +26,15 @@ export const getTasks = (tasks) => dispatch => {
   dispatch({
     type: GET_TASKS,
     payload: tasks
+  })
+}
+
+export const deleteTask = (id) => dispatch => {
+  const tasksInLS = JSON.parse(localStorage.tasks)
+  localStorage.setItem('tasks', JSON.stringify(tasksInLS.filter(task => task.id !== id)))
+
+  dispatch({
+    type: DELETE_TASK,
+    payload: id
   })
 }

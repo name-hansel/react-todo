@@ -1,4 +1,4 @@
-import { ADD_TASK, GET_TASKS } from '../actions/types'
+import { ADD_TASK, DELETE_TASK, GET_TASKS } from '../actions/types'
 
 const initialState = {
   loading: true,
@@ -14,6 +14,12 @@ export default function taskReducer(state = initialState, action) {
     case GET_TASKS:
       return {
         ...state, tasks: action.payload, loading: false
+      }
+    case DELETE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.filter(task => task.id !== action.payload),
+        loading: false
       }
     default:
       return state
