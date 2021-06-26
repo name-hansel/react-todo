@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 
 import TaskItem from './TaskItem'
 
-const Tasks = ({ tasks }) => {
+const Tasks = ({ tasks, tags }) => {
   return (
     <div className="todo-container">
       {
         tasks.length > 0 ? (
           <ul key='task-list'>
             {tasks.map(t => (
-              <li><TaskItem key={t.id} task={t} /></li>
+              <li key={t.id} ><TaskItem task={t} /></li>
             ))}
           </ul>
         ) : (
@@ -23,11 +23,13 @@ const Tasks = ({ tasks }) => {
 }
 
 const mapStateToProps = state => ({
-  tasks: state.task.tasks
+  tasks: state.task.tasks,
+  tags: state.task.tags
 })
 
 Tasks.propTypes = {
   tasks: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
 }
 
 export default connect(mapStateToProps, {})(Tasks)

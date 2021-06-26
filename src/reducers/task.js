@@ -1,9 +1,10 @@
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_EDIT_TASK, GET_TASKS, EDIT_TASK } from '../actions/types'
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, SET_EDIT_TASK, GET_TASKS, EDIT_TASK, ADD_TAG, LOAD_TAGS } from '../actions/types'
 
 const initialState = {
   loading: true,
+  tags: [],
   tasks: [], //id,task,tags,status
-  editTask: null
+  editTask: null,
 }
 
 export default function taskReducer(state = initialState, action) {
@@ -12,10 +13,24 @@ export default function taskReducer(state = initialState, action) {
       return {
         ...state, tasks: [action.payload, ...state.tasks], loading: false
       }
+
+    case ADD_TAG:
+      return {
+        ...state,
+        loading: false,
+        tags: [...new Set(state.tags.concat(action.payload))]
+      }
+
     case GET_TASKS:
       return {
         ...state, tasks: action.payload, loading: false
       }
+
+    case LOAD_TAGS:
+      return {
+        ...state, tags: action.payload
+      }
+
     case COMPLETE_TASK:
       return {
         ...state,

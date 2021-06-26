@@ -4,3 +4,5 @@ export const DELETE_TASK = 'DELETE_TASK'
 export const COMPLETE_TASK = 'COMPLETE_TASK' //Complete and uncomplete both
 export const SET_EDIT_TASK = 'SET_EDIT_TASK'
 export const EDIT_TASK = 'EDIT_TASK'
+export const ADD_TAG = 'ADD_TAG'
+export const LOAD_TAGS = 'LOAD_TAGS'

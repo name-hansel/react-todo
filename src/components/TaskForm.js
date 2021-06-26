@@ -59,7 +59,7 @@ const TaskForm = ({ addTask, editTask, editATask }) => {
 
 TaskForm.propTypes = {
   addTask: PropTypes.func.isRequired,
-  editTask: PropTypes.array.isRequired,
+  editTask: PropTypes.object,
   editATask: PropTypes.func.isRequired,
 }
 

@@ -6,7 +6,7 @@ import './App.css';
 import Tags from './components/Tags'
 import TaskForm from './components/TaskForm'
 import Tasks from './components/Tasks'
-import { getTasks } from './actions/task';
+import { getTasks, loadTags } from './actions/task';
 
 function App() {
   useEffect(() => {
@@ -14,6 +14,7 @@ function App() {
 
     if (tasks.length > 0)
       store.dispatch(getTasks(tasks))
+    store.dispatch(loadTags())
   }, [])
 
   return (
