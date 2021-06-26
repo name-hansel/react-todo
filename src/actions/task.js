@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS } from "./types";
+import { ADD_TASK, COMPLETE_TASK, DELETE_TASK, GET_TASKS, SET_EDIT_TASK, EDIT_TASK } from "./types";
 
 export const addTask = ({ text, tags }) => dispatch => {
   const task = {
@@ -40,8 +40,37 @@ export const deleteTask = (id) => dispatch => {
 }
 
 export const completeTask = (id) => dispatch => {
+  const tasksInLS = JSON.parse(localStorage.tasks)
+  localStorage.tasks = JSON.stringify(tasksInLS.map(task => task.id === id ? {
+    ...task, isComplete: !task.isComplete
+  } : task))
+
   dispatch({
     type: COMPLETE_TASK,
     payload: id
   })
 }
+
+export const setEditTask = (id) => dispatch => {
+  dispatch({
+    type: SET_EDIT_TASK,
+    payload: id
+  })
+}
+
+export const editATask = (id, { text, tags }) => dispatch => {
+  tags = tags.trim().split(',')
+
+  const tasksInLS = JSON.parse(localStorage.tasks)
+  localStorage.tasks = JSON.stringify(tasksInLS.map(task => task.id === id ? {
+    ...task, text, tags
+  } : task))
+
+  dispatch({
+    type: EDIT_TASK,
+    payload: {
+      id, text, tags
+    }
+  })
+}
+

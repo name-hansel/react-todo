@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { addTask } from '../actions/task'
+import { addTask, editATask } from '../actions/task'
 
-const TaskForm = ({ addTask }) => {
+const TaskForm = ({ addTask, editTask, editATask }) => {
+  useEffect(() => {
+    if (editTask != null) {
+      setTask({
+        text: editTask.text,
+        tags: editTask.tags.join()
+      })
+    }
+  }, [editTask])
+
   const [task, setTask] = useState({
     text: '',
     tags: ''
@@ -14,7 +23,10 @@ const TaskForm = ({ addTask }) => {
     <div className="main-one">
       <form onSubmit={e => {
         e.preventDefault()
-        addTask(task)
+        if (editTask === null)
+          addTask(task)
+        else
+          editATask(editTask.id, task)
         setTask({ text: '', tags: '' })
       }}>
         <input
@@ -47,6 +59,12 @@ const TaskForm = ({ addTask }) => {
 
 TaskForm.propTypes = {
   addTask: PropTypes.func.isRequired,
+  editTask: PropTypes.array.isRequired,
+  editATask: PropTypes.func.isRequired,
 }
 
-export default connect(null, { addTask })(TaskForm)
+const mapStateToProps = state => ({
+  editTask: state.task.editTask
+})
+
+export default connect(mapStateToProps, { addTask, editATask })(TaskForm)
