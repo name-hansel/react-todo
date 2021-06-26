@@ -45,7 +45,9 @@
                 class="input input-tags"
                 placeholder="Enter the tags (Comma seperated)"
               />
-              <button class="btn btn-plus"><i class="fa fa-plus"></i></button>
+              <button class="btn btn-plus">
+                <i class="fa fa-plus fa-2x"></i>
+              </button>
             </div>
           </form>
         </div>
@@ -53,57 +55,74 @@
         <!-- Todo items -->
         <div class="todo-container">
           <ul>
-            <!-- Task 1 -->
-            <li class="todo-list-item">
-              <div class="todo-item">
-                <div class="todo-item-main">
-                  <div><i class="far fa-square"></i> <span>Task 1</span></div>
-                  <i class="far fa-trash-alt"></i>
+            <li>
+              <div class="task-item-container">
+                <div class="task-item-main">
+                  <div class="task-item-left">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-square fa-lg"></i>
+                    </button>
+                    <p class="task-item-task">Task 1</p>
+                  </div>
+                  <div class="task-item-right">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-edit fa-lg"></i>
+                    </button>
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-trash-alt fa-lg"></i>
+                    </button>
+                  </div>
                 </div>
-
-                <div class="todo-item-tags">
-                  <span class="item-tag">study, maths, school</span>
-                </div>
-              </div>
-            </li>
-
-            <li class="todo-list-item">
-              <div class="todo-item">
-                <div class="todo-item-main">
-                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
-                  <i class="far fa-trash-alt"></i>
-                </div>
-
-                <!-- <div class="todo-item-tags">
-                <span class="tag">study, maths, school</span>
-              </div> -->
-              </div>
-            </li>
-
-            <li class="todo-list-item">
-              <div class="todo-item">
-                <div class="todo-item-main">
-                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
-
-                  <i class="far fa-trash-alt"></i>
-                </div>
-
-                <div class="todo-item-tags">
-                  <span class="item-tag">study, maths, school</span>
+                <div class="task-item-tags-container">
+                  <p class="task-item-tags">Tags: School, Study, Maths</p>
                 </div>
               </div>
             </li>
 
-            <li class="todo-list-item">
-              <div class="todo-item done">
-                <div class="todo-item-main">
-                  <div><i class="far fa-square"></i> <span>Task 2</span></div>
-
-                  <i class="far fa-trash-alt"></i>
+            <li>
+              <div class="task-item-container">
+                <div class="task-item-main">
+                  <div class="task-item-left">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-check-square fa-lg"></i>
+                    </button>
+                    <p class="task-item-task done">Task 2</p>
+                  </div>
+                  <div class="task-item-right">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-edit fa-lg"></i>
+                    </button>
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-trash-alt fa-lg"></i>
+                    </button>
+                  </div>
                 </div>
+                <div class="task-item-tags-container">
+                  <p class="task-item-tags">Tags: School, Study, Maths</p>
+                </div>
+              </div>
+            </li>
 
-                <div class="todo-item-tags">
-                  <span class="item-tag">study, maths, school</span>
+            <li>
+              <div class="task-item-container">
+                <div class="task-item-main">
+                  <div class="task-item-left">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-square fa-lg"></i>
+                    </button>
+                    <p class="task-item-task">Task 3</p>
+                  </div>
+                  <div class="task-item-right">
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-edit fa-lg"></i>
+                    </button>
+                    <button class="btn-small btn-edit">
+                      <i class="far fa-trash-alt fa-lg"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="task-item-tags-container">
+                  <!-- <p class="task-item-tags">Tags: School, Study, Maths</p> -->
                 </div>
               </div>
             </li>
