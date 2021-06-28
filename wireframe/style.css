@@ -179,3 +179,20 @@ li {
   font-style: italic;
   color: rgba(189, 80, 99, 0.8);
 }
+
+/* Media queries */
+@media only screen and (max-width: 620px) {
+  .body {
+    display: block;
+  }
+  .main {
+    width: auto;
+    margin: 0;
+  }
+  .todo-container {
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+  }
+}

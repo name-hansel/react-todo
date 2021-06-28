@@ -194,3 +194,33 @@ li {
 .done-div {
   opacity: 0.8;
 }
+
+/* Media queries */
+@media only screen and (max-width: 730px) {
+  .body {
+    display: block;
+  }
+  .main {
+    width: 60vw;
+    margin: 0 auto;
+  }
+  .todo-container {
+    width: 100%;
+  }
+  .todo-form {
+    padding: 5%;
+  }
+  .tags-list {
+    align-items: center;
+  }
+  .main-one {
+    width: 100%;
+    text-align: center;
+  }
+  .input {
+    width: 80%;
+  }
+  .input-tags {
+    margin-right: 0.4rem;
+  }
+}
